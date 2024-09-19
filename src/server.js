@@ -2,7 +2,7 @@ import express from 'express';
 import pino from 'pino-http';
 import cors from 'cors';
 import { env } from './utils/env.js';
-import { getAllEvents } from './services/events.js';
+import { getAllEvents, getEventById } from './services/events.js';
 
 const PORT = Number(env('PORT', '3000'));
 // console.log(PORT);
@@ -26,26 +26,26 @@ export const setupServer = () => {
       data: events,
     });
   });
-  // app.get('/contacts/:contactId', async (req, res) => {
-  //   const { contactId } = req.params;
+  app.get('/events/:eventId', async (req, res) => {
+    const { eventId } = req.params;
 
-  //   const contact = await getContactById(contactId);
+    const contact = await getEventById(eventId);
 
-  //   // Відповідь, якщо контакт не знайдено
-  //   if (!contact) {
-  //     res.status(404).json({
-  //       message: 'Contact not found',
-  //     });
-  //     return;
-  //   }
+    // Відповідь, якщо контакт не знайдено
+    if (!contact) {
+      res.status(404).json({
+        message: 'Contact not found',
+      });
+      return;
+    }
 
-  //   // Відповідь, якщо контакт знайдено
-  //   res.status(200).json({
-  //     status: 200,
-  //     message: 'Successfully found contact with id ${contactId}!',
-  //     data: contact,
-  //   });
-  // });
+    // Відповідь, якщо контакт знайдено
+    res.status(200).json({
+      status: 200,
+      message: 'Successfully found contact with id ${contactId}!',
+      data: contact,
+    });
+  });
   app.use('*', (req, res) => {
     res.status(404).json({ message: 'NOT FOUND' });
   });

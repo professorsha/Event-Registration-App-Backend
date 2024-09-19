@@ -6,8 +6,8 @@ export const getAllEvents = async () => {
   return events;
 };
 
-// export const getContactById = async (contactId) => {
-//   const contact = await EventsCollection.findById(contactId);
-// //   console.log({contact});
-//   return contact;
-// };
+export const getEventById = async (eventId) => {
+  const event = await EventsCollection.findById(eventId);
+  // console.log({event});
+  return event;
+};
