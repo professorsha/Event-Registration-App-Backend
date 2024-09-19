@@ -1,7 +1,7 @@
-// const mongoose = require('mongoose');
+
 import mongoose from 'mongoose';
-// const Event = require('./models/Event'); // ваша модель события
-import Event from './db/models/events.js';
+
+import {EventsCollection} from './db/models/events.js';
 
 mongoose.connect('mongodb+srv://bagirairinam:sHSifiEJkbzZ9lvz@cluster0.nyhpa.mongodb.net/events', {
   useNewUrlParser: true,
@@ -84,7 +84,7 @@ mongoose.connect('mongodb+srv://bagirairinam:sHSifiEJkbzZ9lvz@cluster0.nyhpa.mon
   ];
 
   try {
-    await Event.insertMany(events);
+    await EventsCollection.insertMany(events);
     console.log('Events have been seeded!');
     mongoose.connection.close();
   } catch (error) {
