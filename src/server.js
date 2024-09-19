@@ -7,6 +7,7 @@ import { env } from './utils/env.js';
 // Імпортуємо middleware
 import { errorHandler } from './middlewares/errorHandler.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
+import usersRouter from './routers/users.js';
 
 const PORT = Number(env('PORT', '3000'));
 
@@ -31,7 +32,7 @@ export const setupServer = () => {
   });
 
   app.use(eventsRouter); // Додаємо роутер до app як middleware
-
+  app.use(usersRouter);
   app.use('*', notFoundHandler);
 
   app.use(errorHandler);
