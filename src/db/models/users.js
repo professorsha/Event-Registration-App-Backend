@@ -1,6 +1,11 @@
+// import { required, string } from 'joi';
 import { model, Schema } from 'mongoose';
 const userSchema = new Schema(
   {
+    eventId:{
+      type:String,
+      required:true,
+    },
     fullName: {
       type: String,
       required: true,
