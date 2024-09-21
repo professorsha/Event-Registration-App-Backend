@@ -17,16 +17,16 @@ export const getEventsController = async (req, res,next) => {
 
 export const getEventByIdController = async (req, res,next) => {
   const { eventId } = req.params;
-  const event = await getEventById(eventId); // Відповідь, якщо контакт не знайдено
+  const event = await getEventById(eventId); // Відповідь, якщо не знайдено
   if (!event) {
     next(new Error('Event not found'));
     return;
   }
 
-  // Відповідь, якщо контакт знайдено
+  // Відповідь, якщо знайдено
   res.json({
     status: 200,
-    message: `Successfully found student with id ${eventId}!`,
+    message: `Successfully found event with id ${eventId}!`,
     data: event,
   });
 };

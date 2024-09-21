@@ -3,3 +3,8 @@ export const createUser = async (payload) => {
   const user = await UsersCollection.create(payload);
   return user;
 };
+export const getUserById =async(eventId)=>{
+  // console.log(eventId);
+  const user = await UsersCollection.findOne({ eventId: eventId });
+  return user;
+};
