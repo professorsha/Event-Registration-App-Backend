@@ -5,6 +5,6 @@ export const createUser = async (payload) => {
 };
 export const getUserById =async(eventId)=>{
   // console.log(eventId);
-  const user = await UsersCollection.findOne({ eventId: eventId });
+  const user = await UsersCollection.find({ eventId: eventId });
   return user;
 };
